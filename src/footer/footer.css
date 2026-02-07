@@ -1,0 +1,20 @@
+.footerbox{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top:50px;
+    padding: 50px 5vw 100px;
+    background: linear-gradient(to top, orange, white);
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .footerbox {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+}
+

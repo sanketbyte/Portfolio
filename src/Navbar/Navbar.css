@@ -1,0 +1,18 @@
+
+
+.navbar> a{
+    background-color: transparent;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    z-index: 100;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar> a:hover {
+    background: linear-gradient(135deg, #ffcc66, #ff9900);
+}
+
+
+

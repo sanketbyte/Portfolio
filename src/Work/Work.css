@@ -1,0 +1,39 @@
+.placeholder{
+    object-fit: cover;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.imgwrapper:hover{
+    border-radius: 10px;
+    padding:2px;
+    background: linear-gradient(to bottom, orangered, orange);
+}
+
+
+
+.card{
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0  5px 11px gray;
+    transition: 0.5s ease;
+    min-width: 300px;
+}
+
+.card:hover{
+    box-shadow: 0 0 10px 1px orange;
+    transform: scale(1.2) perspective(500px) rotateY(10deg) rotateZ(5deg);
+}
+
+.card h1{
+    width: 200px;
+    text-wrap: wrap;
+}
+.card p{
+    width: 200px;
+    text-wrap: wrap;
+}
+
+
+
+
