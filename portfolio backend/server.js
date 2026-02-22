@@ -8,7 +8,9 @@ dotenv.config();
 const app= express();
 const PORT = 8080;
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://sanketportfolio-three.vercel.app"}
+));
 
 mongoose.connect(process.env.MONGO_URL)
 .then((results) => {

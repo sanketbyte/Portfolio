@@ -11,7 +11,7 @@ const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try{
-        const res = await fetch("http://localhost:8080/enquiry", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/enquiry`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
