@@ -3,20 +3,49 @@ import { useState } from "react";
 
 function Hire() {
 
+    const [Name, setName]= useState("");
+const [Email, setEmail]= useState("");
+const [Message, setMessage]= useState("");
 
+const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try{
+        const res = await fetch("http://localhost:8080/enquiry", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({Name, Email, Message})
+        });
+
+        const data = await res.json();
+        console.log(data);
+
+        alert(`Message sent successfully`)
+
+        setEmail("");
+        setMessage("");
+        setName("");
+    } 
+    catch(err) {
+        console.log(err)
+        alert(`Something went wrong`)
+    }
+}
     
     return(<div className="inquiries">
         <p>Want to share an <span className="work">!dea</span>?</p>
 
         <form className="inquiryform" >
             <label>Name</label>
-            <input type="text" placeholder="Enter your name..." />
+            <input type="text" value={Name} placeholder="Enter your name..." onChange={(e)=>setName(e.target.value)}/>
             <label>Email</label>
-            <input type="email" placeholder="Enter email..." />
+            <input type="email" value={Email} placeholder="Enter email..." onChange={(e)=>setEmail(e.target.value)}/>
             <label>Message</label>
-            <textarea placeholder="Leave a message..."></textarea>
+            <textarea value={Message} placeholder="Leave a message..." onChange={(e)=>setMessage(e.target.value)} />
 
-            <button type="submit" >Let's Go!</button>
+            <button type="submit" onClick={handleFormSubmit}>Let's Go!</button>
         </form>
     </div>
     )
