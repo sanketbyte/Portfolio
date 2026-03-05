@@ -9,10 +9,38 @@ import Footer from './footer/footer.jsx'
 import placeholder from "./assets/11.png";
 import ecommerce from "./assets/ecommerce ui.png"
 import dashboard from "./assets/dashboard.png"
-import todolist from "./assets/todolist.png"
+import todolist from "./assets/todolist.png";
+import { FaHome,FaProjectDiagram,FaReadme,FaCode,FaPhoneAlt,FaFileAlt,FaBars } from "react-icons/fa";
+import { useState,useEffect } from 'react'
 
 
 function App() {
+  const [showNav, setShowNav] = useState(true);
+  const [IsHovered,setIsHovered] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    let timeOut;
+    const handleScroll= () => {
+      // console.log(window.scrollY);
+      setShowNav(true)
+
+      clearTimeout(timeOut);
+
+      timeOut = setTimeout(() => {
+        if(!IsHovered) {
+        setShowNav(false);}
+      }, 5000)
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+    clearTimeout(timeOut);
+  };
+  }, [])
+
   const workData = [
     {
       id: 1,
@@ -44,37 +72,46 @@ function App() {
     {
       id:1,
       title: "Home",
-      link: "#home"
+      link: "#home",
+      icon: FaHome
     },
     {
       id:2,
       title: "Work",
-      link: "#work"
+      link: "#work",
+      icon: FaProjectDiagram
     },
     {
       id:3,
-      title: 'Skills',
-      link: "#skills"
+      title:"Hire me?",
+      link: "#hire",
+      icon: FaPhoneAlt
     },
     {
       id:4,
-      title:"Hire me?",
-      link: "#hire"
-    },
-    {
-      id:5,
-      title: "Resume"
+      title: "Resume",
+      icon: FaFileAlt
     }
   ]
 
   return (
     <>
-    <div className='NavBar'>
+    <button className='hamburgermenu'
+    onClick={() => setMenuOpen(prev => !prev)}>
+      <FaBars className='menuicon'/>
+    </button>
+    
+    <div className={`NavBar ${(showNav || IsHovered) ? "visible" : "hidden"}
+    ${menuOpen ? "open" : ""}`}
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+    >
           {nav.map((item) => (
               <Navbar className="nav" 
                 key={item.id}
                 title={item.title}
                 link={item.link}
+                icon={item.icon}
               />   
           ))}
           </div>
@@ -84,8 +121,10 @@ function App() {
       
       <section id="work">
         <div className="projectsection" >
-        <div className='viewprojectsbtn'><button className='btn'>View all</button></div>
+          <p className='sectiontitle'>Projects</p>
+          <hr />
         <div className='projectcontainer' >
+          
           {workData.map((item) => (
             
               <Work
@@ -102,9 +141,9 @@ function App() {
       </div>
       </section>
       
-      <hr />
-      <section id="skills"><Skills /></section>
-      
+      {/* <hr />
+      <section id="skills"><Skills /></section> */}
+      <p className='sectiontitle'>Connect with me</p>
       <hr />
       <section id="hire"><Hire  /></section>
       

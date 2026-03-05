@@ -7,35 +7,35 @@
 }
 
 
-
-
-.projectsection{
-    margin: 100px 0;
+.projectsection
+{
+    margin: 50px 0;
     width: 100%;
     min-width: 300px;
+}
+
+.sectiontitle
+{
+    font-family: "Inter", sans-serif;
+    justify-self: center;
+    font-size: 36px;
+    color: gray
 }
 
 .projectcontainer
 
 {
     display: flex;
-    gap: 80px;  
+    gap: 60px;  
     flex-wrap: wrap;
     padding: 26px;
     justify-content: center;
     margin: 10px;
+    /* border: 1px solid; */
 } 
 
-    
-
-.viewprojectsbtn{
-    margin: auto;
-    text-align: end;
-    padding: 0 15px;
-    margin: 0px;
-}
-
-.btn{
+.btn
+{
     padding: 15px;
     border-radius: 25px;
     border: none;
@@ -44,28 +44,91 @@
     background: linear-gradient(135deg, #f5f5f5, #e6e6e6)
 }
 
-.btn:hover{
+.btn:hover
+{
     transform: translateY(-5px);
     background: linear-gradient(135deg, #ffcc66, #ff9900)
 }
 
-hr{
+hr
+{
     border: none;
-    width: 90vw;
-    min-width: 300px;
-    margin:auto;
+    width: 8vw;
+    min-width: 1vw;
+    justify-self: center;
     height: 2px;
-    background: linear-gradient(to right, white ,orange, white );
+    /* background: linear-gradient(to right, white ,orange, white ); */
+    background: orange;
 }
 
-.NavBar{
-     display: flex;
+.NavBar
+{
+    display: flex;
+    /* flex-direction: column; */
     border-radius: 3px;
     position:relative;
-    border: 3px solid transparent;
+    border-radius: 5px;
     justify-content: start;
     flex-wrap: wrap;
     z-index: 100;
     position:fixed;
+    margin: 0;
+    padding: 0;
+    transition:0.5s ease-in-out;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
 
+.visible
+{
+    opacity: 1;  
+}
+
+.visible:hover
+{
+    opacity: 1;
+}
+
+.hidden
+{
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.menuicon{
+    display: none;
+}
+
+@media (max-width: 426px) {
+    .NavBar{
+        position: fixed;
+  top: 15;
+  right: -100%;
+  height: 100vh;
+  width: 70%;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+    }
+
+    .NavBar.open {
+         right: 0;
+         opacity: 1;
+    }
+
+    .hidden
+{
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+    .menuicon{
+        display: block;
+        margin: 5px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
 }

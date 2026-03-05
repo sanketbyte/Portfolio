@@ -8,18 +8,36 @@ function Home({children}) {
   {children}
 
   <div className="textgrid">
-    <p className="quote">build logic;<br/>the code will follow</p>
-    <p className="description">
-        Hi! I am Sanket — an engineer turned software developer.<br/>
-I work with the MERN stack to build clean, responsive, and meaningful web experiences.<br/>
-Take a look at my projects below, and feel free to reach out if you’d like to work together!</p>
+    
+     
+    
+
+    <div className="intro cell1">
+      <p className="name">Hi, I am <span className="sanket">Sanket.</span></p>
+      <p className="intro">I am a MERN Software Developer. I make clean web-applications like e-commerce applications,
+      landing pages, small business websites.</p>
+    </div>
+    
+
+    <div className="imgcontainer cell2">
+      <img className="img" src={img2} alt={"Sanket's picture"} />
+       <div className="tiniestcircle"></div>
+      <div className="tinycircle"></div>
+      <div className="minicircle"></div>
+      <div className="orangecircle"></div>
+    </div>
+  
+  <div className="ctabtns cell3">
+    <button className="projectcta">View Projects  </button>
+    <button className="cvcta">Download CV</button>
+    
+</div>
+  
   </div>
 
-  <div className="imgcontainer">
-    <img className="img" src={img2} alt="profile" />
-  </div>
+  
 
-  <div className="title">Fullstack Developer</div>
+  {/* <div className="title">Fullstack Developer</div> */}
 
 </div>
     )

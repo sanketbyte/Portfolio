@@ -28,6 +28,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   transition: all 0.25s ease;
   cursor: pointer;
+  align-content: center;
 }
 
 /* hover effect */

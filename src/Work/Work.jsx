@@ -2,14 +2,17 @@ import "./Work.css";
 
 function Work({ title, description, image }) {
     return (
-        <div className="card">
-            <div className="imgwrapper">
+        <div className="cardcontainer">
+            <div className="card">
                 <img src={image} alt="project thumbnail" className="placeholder" />
             </div>
 
-            <h1>{title}</h1>
-            <p>{description}</p>
+            <div className="projectdetailscontainer">
+                <h1>{title}</h1>
+                <p>{description}</p>
+            </div>
         </div>
+        
     );
 }
 
