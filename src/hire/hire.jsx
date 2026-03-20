@@ -10,7 +10,7 @@ const [Message, setMessage]= useState("");
 const handleSubmit = async (e) => {
 e.preventDefault();
   try {
-    const res = await fetch("http://localhost:8080/api/enquiry", {
+    const res = await fetch(`${import.meta.env.VITE_API}/enquiry`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ e.preventDefault();
       body: JSON.stringify({ Name, Email, Message }),
     });
 
-    const data = await res.json();
+    const data = await res.json(); // does something
 
     if (data.success) {
       alert("Enquiry sent!");
