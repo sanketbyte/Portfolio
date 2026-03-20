@@ -7,32 +7,57 @@ function Hire() {
 const [Email, setEmail]= useState("");
 const [Message, setMessage]= useState("");
 
-const handleFormSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+e.preventDefault();
+  try {
+    const res = await fetch("http://localhost:8080/api/enquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ Name, Email, Message }),
+    });
 
-    try{
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/enquiry`, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({Name, Email, Message})
-        });
+    const data = await res.json();
 
-        const data = await res.json();
-        console.log(data);
-
-        alert(`Message sent successfully`)
-
-        setEmail("");
-        setMessage("");
-        setName("");
-    } 
-    catch(err) {
-        console.log(err)
-        alert(`Something went wrong`)
+    if (data.success) {
+      alert("Enquiry sent!");
+    } else {
+      alert("Failed to send");
     }
-}
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+};
+
+// const handleFormSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try{
+//         const res = await fetch(`${import.meta.env.VITE_API_URL}/enquiry`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-type": "application/json"
+//             },
+//             body: JSON.stringify({Name, Email, Message})
+//         });
+
+//         const data = await res.json();
+//         console.log(data);
+
+//         alert(`Message sent successfully`)
+
+//         setEmail("");
+//         setMessage("");
+//         setName("");
+//     } 
+//     catch(err) {
+//         console.log(err)
+//         alert(`Something went wrong`)
+//     }
+// }
     
     return(<div className="inquiries">
         <p>Want to share an <span className="work">!dea</span>?</p>
@@ -45,7 +70,7 @@ const handleFormSubmit = async (e) => {
             <label>Message</label>
             <textarea value={Message} placeholder="Leave a message..." onChange={(e)=>setMessage(e.target.value)} />
 
-            <button type="submit" onClick={handleFormSubmit}>Let's Go!</button>
+            <button type="submit" onClick={handleSubmit}>Let's Go!</button>
         </form>
     </div>
     )
