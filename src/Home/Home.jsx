@@ -1,5 +1,6 @@
 import img2 from "../assets/img2.png"
 import "./Home.css"
+import resume from "../assets/Sanket Gaikwad MERN Resume.pdf";
 
 function Home({children}) {
     return(
@@ -29,7 +30,7 @@ function Home({children}) {
   
   <div className="ctabtns cell3">
     <button className="projectcta">View Projects  </button>
-    <button className="cvcta">Download CV</button>
+    <a href={resume} download> <button className="cvcta">Download CV</button> </a>
     
 </div>
   
